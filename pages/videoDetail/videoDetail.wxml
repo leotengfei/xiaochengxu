@@ -1,0 +1,32 @@
+<!--pages/myvideo/myvideo.wxml-->
+<view class="section">
+  <video id="myVideo" src="{{videonow.videoUrl}}" autoplay='true' poster="{{videonow.poster}}" controls objectFit="fill"></video>
+  <scroll-view scroll-y class="videoPinglun" style='height:{{scroll_h}}'>
+    <view class="review">
+      <image src="../../img/zan.svg" class="review_img" bindtap='bindZan'></image>
+      <view class="videoBadge" wx:if="{{item.zanNum}}">{{item.zanNum>999?999+"+":item.zanNum}}</view>
+    </view>
+    <view class="videoIntro">
+      <view class="videoIntro_title">简介：</view>
+      <view class="videoIntro_p">这是一段视频的简介lhjkljhkh看来附近的路上风景 看来大家是否啦骄傲斯科拉交电费了阿萨法了解撒旦法家里舒服看见啦时间点卡收费就爱上了</view>
+    </view>
+    <view class="pinglun_area">
+      <view>{{videoCommit.length}} 评论</view>
+      <block wx:for='{{videoCommit}}' wx:key='{{index}}'>
+        <view class='commit_item'>
+          <view class='commit_img_box'>
+            <image src='{{item.avatarUrl}}' lazy-load='true' class='commit_img'></image>
+            <text class='nickName'>{{item.nickName}}</text>
+          </view>
+          <view class='content'>
+            {{item.content}}
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+  <view class="fabiao_container" id="myFabiao">
+      <input type="text" placeholder="发表评论..." class="pinglun" />
+      <button class="fabiao" bindtap="bindSendDanmu">发表</button>
+    </view>
+</view>

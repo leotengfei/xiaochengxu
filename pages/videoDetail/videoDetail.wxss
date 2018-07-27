@@ -1,0 +1,164 @@
+/* pages/myvideo/myvideo.wxss */
+
+video {
+  width: 750rpx;
+  height: 420rpx;
+  box-sizing: border-box;
+}
+
+page {
+  height: 100%;
+}
+
+.review {
+  padding: 5px 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.review_button {
+  background-color: transparent;
+  padding: 0;
+  line-height: 27px;
+}
+
+.review_button::after {
+  border: none; /*去除小程序button边框*/
+}
+
+.review_img {
+  width: 20px;
+  height: 20px;
+  padding: 0 12px;
+  vertical-align: middle;
+}
+
+.danmu {
+  border: 1px solid #76c5f0;
+  height: 25px;
+  font-size: 12px;
+  min-height: 25px;
+  width: 500rpx;
+  border-radius: 3px 0 0 3px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.send {
+  width: 46px;
+  height: 27px;
+  background: none;
+  font-size: 13px;
+  padding: 0;
+  line-height: 27px;
+  border: 1px solid #76c5f0;
+}
+
+.send::after {
+  border: none; /*去除小程序button边框*/
+}
+
+.videoBadge {
+  border-radius: 50%;
+  background-color: #f00;
+  color: #fff;
+  font-size: 13px;
+  padding: 0 3px;
+  position: relative;
+  right: 10px;
+}
+
+/*内容介绍区域*/
+
+.videoIntro {
+  width: 750rpx;
+  min-height: 60px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.videoIntro_p {
+  text-indent: 30px;
+  font-size: 16px;
+}
+
+/*评论区域*/
+
+.videoPinglun {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pinglun_area {
+  width: 100%;
+  height: 400px;
+  box-sizing: border-box;
+  padding:15px 15px;
+}
+.commit_item{
+  border-bottom:1px solid #ddd;
+  padding:10px 0;
+}
+.commit_img{
+  width: 50rpx;
+  height: 50rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.nickName{
+  color:#666;
+  font-size:16px;
+}
+.content{
+  font-size:12px;
+  color:#999;
+  padding:0 10px;
+}
+
+
+
+/*发表评论按钮*/
+
+.fabiao_container {
+  width:750rpx;
+  padding: 5px 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #76c5f0;
+  position:fixed;
+  left:0;
+  bottom:0;
+}
+
+.pinglun {
+  border: 1px solid #76c5f0;
+  height: 25px;
+  font-size: 12px;
+  min-height: 25px;
+  width: 500rpx;
+  border-radius: 3px 0 0 3px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  margin-left:20px;
+}
+
+.fabiao {
+  width: 46px;
+  height: 27px;
+  background: #ffffff;
+  font-size: 13px;
+  padding: 0;
+  line-height: 27px;
+}
+.fabiao::after{
+  border:none;
+}

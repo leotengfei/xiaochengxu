@@ -1,0 +1,119 @@
+/* pages/luntan/luntan.wxss */
+page{
+  background-color: #dddddd;
+}
+.luntan_tab{
+  background-color:#ffffff;
+  padding:15px 0;
+}
+.tab_item_active{
+  width:50%;
+  display: inline-block;
+  text-align:center;
+  text-decoration: underline;
+  font-weight: bold;
+  color:#76C5F0;
+}
+.tab_item{
+  width:50%;
+  display: inline-block;
+  text-align: center;
+}
+.search_box{
+  background-color: #ffffff;
+  width:90%;
+  height:30px;
+  line-height: 24px;
+  margin:5px auto;
+  text-align: center;
+  border-radius: 5px;
+}
+.search_box_img{
+  width:20px;
+  height:20px;
+  vertical-align: middle;
+}
+.search_box_txt{
+  font-size: 16px;
+  color:#dbdbdb;
+}
+.luntan_card{
+  background-color: #ffffff;
+  margin-bottom:5px;
+  padding:10px 15px;
+}
+.luntan_card_title{
+  font-weight: bold;
+  line-height: 27px;
+}
+.title_img{
+  width:28px;
+  height:28px;
+  vertical-align: middle; 
+}
+.luntan_card_info{
+  padding:10px 0;
+  font-size:14px;
+  color:#aaa;
+  border-bottom:1px solid #aaa;
+}
+.luntan_card_info::after{
+  content:'';
+  display:block;
+  clear: both;
+}
+.info_date{
+  padding:0 10px;
+}
+.info_badge{
+  float:right;
+}
+.info_badge_item{
+  color:#fff;
+  background-color: #76C5F0;
+  margin-left:5px;
+  padding:3px 5px;
+  border-radius: 5px;
+}
+.luntan_card_answer{
+  font-size:16px;
+  font-weight: 600;
+}
+
+/*全部分类*/
+.luntan_fenlei{
+  display:flex;
+  flex-wrap: wrap;
+  color:#555;
+}
+.fenlei_item{
+  margin-top:12rpx;
+  margin-left:12rpx;
+  width:234rpx;
+  height:190rpx;
+  background-color: #ffffff;
+  text-align: center;
+  padding-top:50rpx;
+}
+.item_img{
+  width:100rpx;
+  height:100rpx;
+}
+
+/*回答图标*/
+.huida{
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  background-color:rgba(0, 0, 0, .3);
+  border-radius: 5px;
+  padding:3px;
+}
+.huida_img{
+  width:50px;
+  height:30px;
+}
+.huida_txt{
+  color:#555;
+  font-size:12px;
+}

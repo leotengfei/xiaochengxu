@@ -1,0 +1,13 @@
+<!--pages/wode/wenti.wxml-->
+<block wx:for="{{wenti_list}}">
+  <navigator class='wenti_card' url='/pages/luntan/detail?wid={{item.wid}}'>
+    <view class='wenti_img_container' wx:if="{{item.wimg}}">
+      <image src='{{item.wimg}}' class='wenti_img'></image>
+    </view>
+    <view class="{{item.wimg?'wenti_info':'wenti_info_noimg'}}">
+      <view class='wenti_title'>{{item.wtitle}}</view>
+      <view class='wenti_desc'>{{item.wdesc}}</view>
+      <view class='wenti_time'>{{item.wtime}}</view>
+    </view>
+  </navigator>
+</block>

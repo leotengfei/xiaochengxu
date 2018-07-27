@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="indexContainer">
+  <block wx:if="{{canLogin}}">
+    <!--登陆过，出现加载动画  -->
+    <div class="loader">Loading</div>
+  </block>
+  <block wx:else>
+    <!--第一次登陆，显示标签页面，授权  -->
+    <image src='http://p9mwnc6fh.bkt.clouddn.com/wxlogo.png' class='wxlogo load_logo'></image>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='btn-login' disabled='{{btnDisable}}'>登陆</button>
+  </block>
+</view>

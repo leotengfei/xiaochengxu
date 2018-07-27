@@ -1,0 +1,13 @@
+/* pages/newsDetail/newsDetail.wxss */
+@import "/wxParse/wxParse.wxss";
+.main{
+  margin:50rpx;
+}
+.art_p{
+  font-size: 18px;
+  line-height: 26px;
+  padding-bottom: 15px;
+}
+.wxParse-img{
+  max-width:100%;
+}

@@ -1,0 +1,32 @@
+<!--pages/index/second.wxml-->
+<view class="indexContainer">
+  <view class='gradeContainer'>
+    <view class='tags_title'>
+      请选择年龄段<text class='tags_title_badge'>*(必选)</text>
+    </view>
+    <radio-group bindchange="gradeValChange">
+      <block wx:for="{{gradeArr}}">
+        <view class=" item">
+          <label class="radio {{item.checked?'is_checked':''}}">
+            <radio value="{{item.value}}" checked="{{item.checked}}" hidden="false" />{{item.value}}
+          </label>
+        </view>
+      </block>
+    </radio-group>
+  </view>
+  <view class='tagContainer'>
+    <view class='tags_title'>
+      请选择您的兴趣标签
+    </view>
+    <checkbox-group bindchange="serviceValChange">
+      <block wx:for="{{allGoodsFilte}}">
+        <view class=" item">
+          <label class="checkbox {{item.checked?'is_checked':''}}">
+            <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />{{item.value}}
+          </label>
+        </view>
+      </block>
+    </checkbox-group>
+     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取电话号码</button>
+  </view>
+</view>

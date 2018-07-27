@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "传道",
+  "enablePullDownRefresh":true,
+  "onReachBottomDistance":50
+}

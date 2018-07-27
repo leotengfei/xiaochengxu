@@ -1,0 +1,63 @@
+/* pages/wode/shoucang.wxss */
+.tab_box{
+  border-bottom: 1px solid #ddd;
+}
+.tab_item_active{
+  width:130rpx;
+  line-height: 40px;
+  display: inline-block;
+  text-align:center;
+  text-decoration: underline;
+  font-weight: bold;
+  color:#76C5F0;
+}
+.tab_item{
+  width:130rpx;
+  line-height: 40px;
+  display: inline-block;
+  text-align: center;
+}
+.wenti_card{
+  border-bottom:1px solid #ddd;
+  padding:10rpx 30rpx;
+}
+.wenti_card::after{
+  content:'';
+  display: block;
+  clear:both;
+}
+.wenti_img_container{
+  float:left;
+  margin-right:30rpx;
+}
+.wenti_img{
+  width:120rpx;
+  height:120rpx;
+}
+.wenti_info{
+  float:left;
+  width:530rpx;
+}
+.wenti_info_noimg{
+  float:left;
+  width:680rpx;
+}
+.wenti_desc{
+  font-size:16px;
+  color:#aaa;
+}
+.wenti_time{
+  text-align: right;
+  font-size:12px;
+  color:#aaa;
+}
+.video_intro{
+  font-size:36rpx;
+  display: -webkit-box;
+  line-height: 42rpx;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}

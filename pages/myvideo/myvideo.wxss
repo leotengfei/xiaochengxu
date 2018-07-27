@@ -1,0 +1,80 @@
+/* pages/myvideo/myvideo.wxss */
+video{
+  width:750rpx;
+}
+.fakeVideo{
+  position: relative;
+}
+.faketitle{
+  position:absolute;
+  top:0;
+  left:0;
+  color:#ffffff;
+  z-index: 98;
+  padding:10px 15px 0 15px;
+  font-size:36rpx;
+  display: -webkit-box; 
+  line-height: 42rpx;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.fakeVideo_under{
+  width:750rpx;
+  height:420rpx;
+  z-index:10;
+}
+.fakeVideo_mask{
+  width:750rpx;
+  height:420rpx;
+  background-color: rgba(0,0,0,.2);
+  position:absolute;
+  z-index:20;
+}
+.fakeVideo_top{
+  width:50px;
+  height:50px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-25px;
+  margin-top:-25px;
+  z-index: 99;
+}
+.review{
+    padding:5px 0;
+    overflow:hidden;
+    display:flex;
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom:7px;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+}
+.review_button{
+  background-color:transparent;
+  padding:0;
+  line-height: 27px; 
+  align-self: flex-end;
+  margin-right:15px;
+}
+.review_button::after{
+  border:none;/*去除小程序button边框*/
+}
+.review_img{
+    width:20px;
+    height: 20px;
+    padding:0 12px;
+    vertical-align: middle; 
+}
+.videoBadge{
+  border-radius: 50%;
+  background-color: #ff0000;
+  color:#ffffff;
+  font-size:13px;
+  padding:0 3px;
+  position: relative;
+  right:10px;
+}

@@ -1,0 +1,36 @@
+<!--pages/luntan/tiwen.wxml-->
+<view class='t_input'>
+  <input placeholder='请写下你的问题' class='t_input_area'></input>
+</view>
+<view class='t_txt'>
+  <textarea placeholder='添加问题补充描述（选填）' class='t_txt_area'></textarea>
+</view>
+
+
+<!--图片上传区域  -->
+<view class='img_area'>
+  <view class='img_title'>添加图片</view>
+  <block wx:for="{{files}}" wx:key="*this">
+    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+      <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+    </view>
+  </block>
+  <view class="weui-uploader__input-box">
+    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+  </view>
+</view>
+
+<!--标签添加区域  -->
+<view class='tag_area'>
+  <view class='tag_title'>添加对应话题会更快得到回答({{tag_num}}/2)</view>
+  <block wx:for="{{tags}}" wx:for-index="idx">
+    <view class="{{mytags[idx]?'tag_item_active':'tag_item'}}" data-idx='{{idx}}' data-tag='{{item}}' bindtap='chooseTag'>
+      {{item}}
+    </view>
+  </block>
+</view>
+
+<!--提交按钮  -->
+<view class='tijiao_box'>
+  <button class='tijiao'>提交问题</button>
+</view>

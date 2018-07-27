@@ -1,0 +1,36 @@
+<!--pages/wode/lishi.wxml-->
+<!--标签区域  -->
+<view class='tab_box'>
+  <text class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>问答</text>
+  <text class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" data-tabid="1" bindtap='selectTab'>视频</text>
+</view>
+<!--内容区域  -->
+<!--问答内容  -->
+<view wx:if="{{currenttab==='0'}}">
+  <block wx:for="{{wenti_list}}">
+    <navigator class='wenti_card' url='/pages/luntan/detail?wid={{item.wid}}'>
+      <view class='wenti_img_container' wx:if="{{item.wimg}}">
+        <image src='{{item.wimg}}' class='wenti_img'></image>
+      </view>
+      <view class="{{item.wimg?'wenti_info':'wenti_info_noimg'}}">
+        <view class='wenti_title'>{{item.wtitle}}</view>
+        <view class='wenti_desc'>{{item.wdesc}}</view>
+        <view class='wenti_time'>浏览于 {{item.wtime}}</view>
+      </view>
+    </navigator>
+  </block>
+</view>
+<!--视频内容  -->
+<view wx:if="{{currenttab==='1'}}">
+  <block wx:for="{{videoList}}">
+    <navigator class='wenti_card' url="/pages/videoDetail/videoDetail?videoid={{item.videoId}}">
+      <view class='wenti_img_container'>
+        <image src='{{item.poster}}' class='wenti_img'></image>
+      </view>
+      <view class="wenti_info">
+        <view class='video_intro'>{{item.intro}}</view>
+        <view class='wenti_time'>浏览于 {{item.view_time}}</view>
+      </view>
+    </navigator>
+  </block>
+</view>

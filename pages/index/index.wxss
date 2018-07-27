@@ -1,0 +1,96 @@
+/**index.wxss**/
+
+.indexContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100rpx 0;
+  box-sizing: border-box;
+} 
+.wxlogo{
+  width:224rpx;
+  height: 178rpx;
+  margin-top:250rpx;
+  margin-bottom: 400rpx;
+}
+
+page {
+  background: linear-gradient(#404563, #10142E);
+  color:#ffffff;
+}
+
+/* 加载动画 */
+.loader {
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  margin: 100px auto;
+  position: relative;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 0;
+  text-transform: uppercase;
+}
+
+.loader:before,
+.loader:after {
+  opacity: 0;
+  box-sizing: border-box;
+  content: "\0020";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  border: 5px solid #84FFFF;
+  box-shadow: 0 0 50px #84FFFF, inset 0 0 50px #84FFFF;
+}
+
+.loader:after {
+  z-index: 1;
+  animation: gogoloader 2s infinite 1s;
+}
+
+.loader:before {
+  z-index: 2;
+  animation: gogoloader 2s infinite;
+}
+
+@keyframes gogoloader {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.load_logo {
+  animation: fade_logo 3s linear;
+}
+
+@keyframes fade_logo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn-login{
+  background-color: transparent;
+  border: 1px solid #C1C2C9;
+  color: #C1C2C9;
+  width: 400rpx;
+  height:70rpx;
+  line-height: 70rpx;
+}

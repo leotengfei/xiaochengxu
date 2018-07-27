@@ -1,0 +1,21 @@
+<!--pages/news/news.wxml-->
+<!--最新内容-->
+<block wx:for="{{newsList}}" wx:for-index="i" wx:key="i">
+  <navigator class="listWrap" url="/pages/newsDetail/newsDetail?index={{i}}">
+    <image wx:if="{{item.pic}}" class="listThumb" src="{{item.pic}}" lazy-load='true' />
+    <view class="{{item.pic?'listInfo':'listInfo_noimg'}}">
+      <view class="listTitle">{{item.title}}</view>
+      <view class="listKeyAdd">
+        <text class="addFN">{{item.src}}</text>
+        <text class="addKY">{{item.time}}</text>
+      </view>
+      <view class="listKeyAdd">
+        <text class="addKY">{{item.time}}</text>
+      </view>
+    </view>
+  </navigator>
+</block>
+<block wx:if="{{loading}}">
+  <image class="loading" src="/img/loading.png" />
+  <!-- <text>没有更多内容</text> -->
+</block>
