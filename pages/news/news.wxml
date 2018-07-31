@@ -1,21 +1,34 @@
 <!--pages/news/news.wxml-->
+<!-- 导航标签 -->
+<view class="weui-tab">
+  <view class="weui-navbar">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+</view>
 <!--最新内容-->
-<block wx:for="{{newsList}}" wx:for-index="i" wx:key="i">
-  <navigator class="listWrap" url="/pages/newsDetail/newsDetail?index={{i}}">
-    <image wx:if="{{item.pic}}" class="listThumb" src="{{item.pic}}" lazy-load='true' />
-    <view class="{{item.pic?'listInfo':'listInfo_noimg'}}">
-      <view class="listTitle">{{item.title}}</view>
-      <view class="listKeyAdd">
-        <text class="addFN">{{item.src}}</text>
-        <text class="addKY">{{item.time}}</text>
+<view class='newsContainer'>
+  <block wx:for="{{newsList}}" wx:for-index="i" wx:key="i">
+    <navigator class="listWrap" url="/pages/newsDetail/newsDetail?index={{i}}">
+      <image wx:if="{{item.pic}}" class="listThumb" src="{{item.pic}}" lazy-load='true' />
+      <view class="{{item.pic?'listInfo':'listInfo_noimg'}}">
+        <view class="listTitle">{{item.title}}</view>
+        <view class="listKeyAdd">
+          <text class="addFN">{{item.src}}</text>
+          <text class="addKY">{{item.time}}</text>
+        </view>
+        <view class="listKeyAdd">
+          <text class="addKY">{{item.time}}</text>
+        </view>
       </view>
-      <view class="listKeyAdd">
-        <text class="addKY">{{item.time}}</text>
-      </view>
-    </view>
-  </navigator>
-</block>
-<block wx:if="{{loading}}">
-  <image class="loading" src="/img/loading.png" />
-  <!-- <text>没有更多内容</text> -->
-</block>
+    </navigator>
+  </block>
+  <block wx:if="{{loading}}">
+    <image class="loading" src="/img/loading.png" />
+    <!-- <text>没有更多内容</text> -->
+  </block>
+</view>

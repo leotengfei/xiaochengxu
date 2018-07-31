@@ -23,6 +23,7 @@ page {
   margin-bottom:10rpx;
   box-sizing: border-box;
   width: 100%;
+  padding-right: -30rpx;
 }
 .tagContainer{
   color: #272D77;
@@ -59,8 +60,45 @@ label {
   text-align: center;
 }
  
-.is_checked {
+.is_grade_checked {
   border: 4rpx solid #404580;
   color: #fff;
   background: #404580;
+}
+
+
+.is_checked {
+  border: 4rpx solid #7579af;
+  color: #fff;
+  background: #7579af;
+}
+
+.chageTags{
+  text-align: right;
+  color: #acacac;
+  font-size: 16px;
+  padding:0 20rpx;
+}
+
+.chageTags image{
+  width: 30rpx;
+  height: 30rpx;
+  padding:0 10rpx;
+}
+
+/* 按钮区域 */
+.btn-area{
+  margin:30rpx;
+  text-align: center;
+}
+.btn-area button{
+  display: inline-block;
+  width:330rpx;
+  background: #292c53;
+  color:#ffffff;
+}
+.btn-area view{
+  font-size: 12px;
+  padding-top:30rpx;
+  color:#7579af;
 }

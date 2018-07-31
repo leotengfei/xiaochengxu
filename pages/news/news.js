@@ -1,4 +1,5 @@
 // pages/news/news.js
+var sliderWidth = 48; // 需要设置slider的宽度，用于计算中间位置
 //获取应用实例
 const app=getApp();
 
@@ -6,10 +7,22 @@ Page({
   data: {
     newsList: {},
     loading: false,
-    cur_start: 0
+    cur_start: 0,
+    tabs: ["推荐", "家庭教育", "升学考试","政策法规","搞笑娱乐"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0
   },
   onLoad: function () {
     var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
     //这里请求的是列表
     wx.request({
       url: 'https://api.jisuapi.com/news/get',
@@ -83,5 +96,11 @@ Page({
       desc: '小星-新闻',
       path: 'pages/news/news'
     }
+  },
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
   }
 })

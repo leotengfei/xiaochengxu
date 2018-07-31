@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/second",
     "pages/index/index",
+    "pages/index/second",
     "pages/myvideo/myvideo",
     "pages/videoDetail/videoDetail",
     "pages/news/news",
@@ -24,7 +24,7 @@
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
-    "color": "#ffffff",
+    "color": "#afafaf",
     "selectedColor": "#ffffff",
     "backgroundColor": "#1E203B",
     "list": [

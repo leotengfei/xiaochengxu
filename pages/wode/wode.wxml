@@ -18,7 +18,10 @@
           <image src='../../img/wodetiwen.svg' class='list_img'></image>
         </view>
         <view class='list_name'>
-          问题
+          我的问题
+        </view>
+        <view class='list_right'>
+          <image src='../../img/right.svg' class='list_img'></image>
         </view>
       </view>
     </navigator>
@@ -29,7 +32,10 @@
           <image src='../../img/wodehuida.svg' class='list_img'></image>
         </view>
         <view class='list_name'>
-          回答
+          我的回答
+        </view>
+        <view class='list_right'>
+          <image src='../../img/right.svg' class='list_img'></image>
         </view>
       </view>
     </navigator>
@@ -40,7 +46,10 @@
           <image src='../../img/shoucang.svg' class='list_img'></image>
         </view>
         <view class='list_name'>
-          收藏
+          我的收藏
+        </view>
+        <view class='list_right'>
+          <image src='../../img/right.svg' class='list_img'></image>
         </view>
       </view>
     </navigator>
@@ -51,7 +60,24 @@
           <image src='../../img/lishi.svg' class='list_img'></image>
         </view>
         <view class='list_name'>
-          历史
+          历史记录
+        </view>
+        <view class='list_right'>
+          <image src='../../img/right.svg' class='list_img'></image>
+        </view>
+      </view>
+    </navigator>
+    <!--资料下载  -->
+    <navigator url="">
+      <view class='list_item'>
+        <view class='list_icon'>
+          <image src='../../img/xiazai.svg' class='list_img'></image>
+        </view>
+        <view class='list_name'>
+          资料宝库
+        </view>
+        <view class='list_right'>
+          <image src='../../img/right.svg' class='list_img'></image>
         </view>
       </view>
     </navigator>

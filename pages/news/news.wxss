@@ -1,80 +1,159 @@
 /* pages/news/news.wxss */
+
 .usermotto {
   margin-top: 200px;
 }
 
 /*优化后的样式*/
- swiper-item image {
-  width:750rpx;
-} 
+
+swiper-item image {
+  width: 750rpx;
+}
+
 .listWrap {
-  width:705rpx;
-  padding:30rpx 25rpx;
-  border-bottom:1px solid #e5e5e5;
+  width: 705rpx;
+  padding: 30rpx 25rpx;
+  border-bottom: 1px solid #e5e5e5;
 }
+
 .listThumb {
-  width:260rpx;
-  height:160rpx;
+  width: 260rpx;
+  height: 160rpx;
   margin-right: 10rpx;
-  display:block;
-  float:left;
+  display: block;
+  float: left;
 }
+
 .listInfo {
-  height:160rpx;
-  width:425rpx;
-  display:inline-block;
-  padding-left:10rpx;
+  height: 160rpx;
+  width: 425rpx;
+  display: inline-block;
+  padding-left: 10rpx;
   position: relative;
 }
+
 .listInfo_noimg {
-  height:160rpx;
-  width:690rpx;
-  display:inline-block;
-  padding-left:10rpx;
+  height: 160rpx;
+  width: 690rpx;
+  display: inline-block;
+  padding-left: 10rpx;
   position: relative;
 }
+
 .listTitle {
-  color:#333;
-  font-size:36rpx;
+  color: #333;
+  font-size: 36rpx;
   font-weight: bold;
   display: -webkit-box;
   line-height: 42rpx;
   word-break: break-all;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp:2;
+  -webkit-line-clamp: 2;
   overflow: hidden;
-  text-overflow:ellipsis;
-}
-.listKeyAdd {
-  font-size:30rpx;
-  position: absolute;
-  bottom: 0;
-  width:100%;
-}
-.addFN {
-  color: #808080;
-  display:block;
-  float:left;
-}
-.addKY {
-  color: #d9c599;
-  float:right;
-  display:block;
-  margin-right:15rpx;
+  text-overflow: ellipsis;
 }
 
-@-webkit-keyframes rotation{
-from {-webkit-transform: rotate(0deg);}
-to {-webkit-transform: rotate(360deg);}
+.listKeyAdd {
+  font-size: 30rpx;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
+
+.addFN {
+  color: #808080;
+  display: block;
+  float: left;
+}
+
+.addKY {
+  color: #d9c599;
+  float: right;
+  display: block;
+  margin-right: 15rpx;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
 .loading {
--webkit-transform: rotate(360deg);
-animation: rotation 1.5s linear infinite;
--moz-animation: rotation 1.5s linear infinite;
--webkit-animation: rotation 1.5s linear infinite;
--o-animation: rotation 1.5s linear infinite;
-width:60rpx;
-height:60rpx;
-display:block;
-margin:10rpx auto;
+  -webkit-transform: rotate(360deg);
+  animation: rotation 1.5s linear infinite;
+  -moz-animation: rotation 1.5s linear infinite;
+  -webkit-animation: rotation 1.5s linear infinite;
+  -o-animation: rotation 1.5s linear infinite;
+  width: 60rpx;
+  height: 60rpx;
+  display: block;
+  margin: 10rpx auto;
+}
+
+/* 上部导航栏css */
+
+.page__bd {
+  padding-bottom: 0;
+  color: #353535;
+}
+
+.newsContainer {
+  padding-top: 45px;
+}
+
+.weui-navbar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  z-index: 500;
+  top: 0;
+  width: 100%;
+  border-bottom: 1rpx solid #ccc;
+  background: #ffffff;
+}
+
+.weui-navbar__item {
+  position: relative;
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  padding: 13px 0;
+  text-align: center;
+  font-size: 0;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+  color: #404c85;
+}
+
+.weui-navbar__slider {
+  position: absolute;
+  content: " ";
+  left: 0;
+  bottom: 0;
+  width: 2.5em;
+  height: 3px;
+  background-color: #404c85;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.weui-navbar__title {
+  display: inline-block;
+  font-size: 15px;
+  max-width: 8em;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
 }

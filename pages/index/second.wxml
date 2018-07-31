@@ -2,12 +2,13 @@
 <view class="indexContainer">
   <view class='gradeContainer'>
     <view class='tags_title'>
-      请选择年龄段<text class='tags_title_badge'>*(必选)</text>
+      请选择年龄段
+      <text class='tags_title_badge'>*(必选)</text>
     </view>
     <radio-group bindchange="gradeValChange">
-      <block wx:for="{{gradeArr}}">
+      <block wx:for="{{gradeArr}}" wx:key="item.value">
         <view class=" item">
-          <label class="radio {{item.checked?'is_checked':''}}">
+          <label class="radio {{item.checked?'is_grade_checked':''}}">
             <radio value="{{item.value}}" checked="{{item.checked}}" hidden="false" />{{item.value}}
           </label>
         </view>
@@ -19,7 +20,7 @@
       请选择您的兴趣标签
     </view>
     <checkbox-group bindchange="serviceValChange">
-      <block wx:for="{{allGoodsFilte}}">
+      <block wx:for="{{allGoodsFilte}}" wx:for-index="i" wx:key="i">
         <view class=" item">
           <label class="checkbox {{item.checked?'is_checked':''}}">
             <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" />{{item.value}}
@@ -27,6 +28,13 @@
         </view>
       </block>
     </checkbox-group>
-     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取电话号码</button>
+    <view class='chageTags' bindtap='handleChange'>
+      <image src='../../img/refresh.svg'></image>
+      <text>换一批</text>
+    </view>
+    <view class='btn-area'>
+      <button type='default' bindtap='handleChoosed' disabled='{{btn_choose}}'>选好了</button>
+      <view bindtap='handleJump'>不感兴趣，直接跳过</view>
+    </view>
   </view>
 </view>
