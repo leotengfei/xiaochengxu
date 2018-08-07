@@ -1,5 +1,6 @@
 // pages/news/news.js
 var sliderWidth = 48; // 需要设置slider的宽度，用于计算中间位置
+var uid = wx.getStorageSync('uid') || '';
 //获取应用实例
 const app=getApp();
 
@@ -11,7 +12,8 @@ Page({
     tabs: ["推荐", "家庭教育", "升学考试","政策法规","搞笑娱乐"],
     activeIndex: 0,
     sliderOffset: 0,
-    sliderLeft: 0
+    sliderLeft: 0,
+    category:'推荐'
   },
   onLoad: function () {
     var that = this
@@ -25,28 +27,20 @@ Page({
     });
     //这里请求的是列表
     wx.request({
-      url: 'https://api.jisuapi.com/news/get',
+      url: 'https://mokey.club/News/NewsByName',
+      method: 'POST',
       data: {
-        channel:"教育",
-        num: 10,
-        start:that.data.cur_start,
-        appkey:'a1b25be9702f0d20'
+        category:that.data.category,
+        listRows: 10,
+        list:that.data.cur_start,
+        uid:uid
       },
-      success: function (e) {
-        //console.log(e.data.result.list)
-        //console.log(e.data.result.list[0].time.slice(0,10))
-
-        var data_list=e.data.result.list;
-        for(var i=0;i<data_list.length;i++){
-          data_list[i].time=data_list[i].time.slice(0,10)
-          app.globalData.newsDetail[i]=data_list[i].content
-          //为全局变量newsDetail[]添加新闻内容
-        }
-        //console.log(app.globalData.newsDetail)
-
+      success: function (res) {
+        console.log(res)
+        var data_list=res.data.data;
         that.setData({
           newsList: data_list,
-          cur_start:that.data.cur_start+10
+          cur_start:that.data.cur_start+1
         })
         wx.stopPullDownRefresh()//停止下拉刷新动画
       }
@@ -58,25 +52,20 @@ Page({
     //每次进入 当前页++
     console.log(that.data.cur_start)
     that.setData({
-      cur_start: that.data.cur_start+10,
+      cur_start: that.data.cur_start+1,
       loading: true
     })
     wx.request({
-      url: 'https://api.jisuapi.com/news/get',
+      url: 'https://mokey.club/News/NewsByName',
+      method:'POST',
       data: {
-        channel: "教育",
-        num: 10,
-        start: that.data.cur_start,
-        appkey: 'a1b25be9702f0d20'
+        category: that.data.category,
+        listRows: 10,
+        list: that.data.cur_start,
+        uid: uid
       },
       success: function (e) {
-        var data_list = e.data.result.list;
-        var newscontent=[];//新闻内容列表
-        for (var i = 0; i < data_list.length; i++) {
-          data_list[i].time = data_list[i].time.slice(0, 10)
-          newscontent[i] = data_list[i].content
-        }
-        app.globalData.newsDetail = app.globalData.newsDetail.concat(newscontent);//拼接到新闻列表中
+        var data_list = e.data.data;
         that.setData({
           newsList: that.data.newsList.concat(data_list),
           loading: false
@@ -92,15 +81,21 @@ Page({
   //三点分享
   onShareAppMessage: function () {
     return {
-      title: '小星',
-      desc: '小星-新闻',
+      title: '星空师说',
+      desc: '师说新闻',
       path: 'pages/news/news'
     }
   },
   tabClick: function (e) {
+    var that = this;
+    var category = '推荐';
+    category = that.data.tabs[e.currentTarget.id]
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
+      activeIndex: e.currentTarget.id,
+      cur_start: 0,
+      category: category
     });
+    this.onLoad()
   }
 })

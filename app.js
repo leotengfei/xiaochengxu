@@ -5,10 +5,10 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    console.log('app.onLaunch加载完成')
   },
   globalData: {
     userInfo: null,
-    newsDetail: [],
     videoDetial: {},
     tel:'',
     sessionId:'',

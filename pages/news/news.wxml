@@ -12,16 +12,13 @@
 </view>
 <!--最新内容-->
 <view class='newsContainer'>
-  <block wx:for="{{newsList}}" wx:for-index="i" wx:key="i">
-    <navigator class="listWrap" url="/pages/newsDetail/newsDetail?index={{i}}">
-      <image wx:if="{{item.pic}}" class="listThumb" src="{{item.pic}}" lazy-load='true' />
-      <view class="{{item.pic?'listInfo':'listInfo_noimg'}}">
+  <block wx:for="{{newsList}}" wx:key="id">
+    <navigator class="listWrap" url="/pages/newsDetail/newsDetail?index={{item.id}}">
+      <image wx:if="{{item.image}}" class="listThumb" src="{{item.image}}" lazy-load='true' />
+      <view class="{{item.image?'listInfo':'listInfo_noimg'}}">
         <view class="listTitle">{{item.title}}</view>
         <view class="listKeyAdd">
-          <text class="addFN">{{item.src}}</text>
-          <text class="addKY">{{item.time}}</text>
-        </view>
-        <view class="listKeyAdd">
+          <text class="addFN">{{item.source}}</text>
           <text class="addKY">{{item.time}}</text>
         </view>
       </view>

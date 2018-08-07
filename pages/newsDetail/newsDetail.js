@@ -1,6 +1,7 @@
 // pages/newsDetail/newsDetail.js
 //获取应用实例
 const app = getApp();
+const uid = wx.getStorageSync('uid') || '';
 
 const WxParse = require('../../wxParse/wxParse.js');
 
@@ -18,10 +19,27 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.index)
-    console.log(app.globalData.newsDetail)
-    var article = app.globalData.newsDetail[options.index];
+    console.log('uid'+uid)
+    console.log('nid'+options.index)
     var that = this;
-    WxParse.wxParse('article', 'html', article, that, 5);
+    wx.request({
+      url: 'https://mokey.club/News/newsData',
+      method: 'POST',
+      data:{
+        uid:uid,
+        nid:options.index
+      },
+      success:function(res){
+        console.log('文章内容'+res)
+        console.log(res)
+        console.log(res.data.content)
+        var article = res.data.content;
+        console.log(1);
+        WxParse.wxParse('article', 'html', article, that, 5);
+        console.log(2)
+      }
+
+    })
   },
 
   /**
