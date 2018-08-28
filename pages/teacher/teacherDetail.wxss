@@ -1,0 +1,119 @@
+/* pages/teacher/teacherDetail.wxss */
+.detail_header{
+  width: 750rpx;
+  height:160rpx;
+  overflow: hidden;
+  position: relative;
+}
+.header_circle{
+  width:2400rpx;
+  height:2400rpx;
+  border-radius: 50%;
+  z-index: 30;
+  position:absolute;
+  top:-2250rpx;
+  left:50%;
+  margin-left:-1200rpx;
+  /* background: linear-gradient(to right,#676878 40%,#272840 60%) */
+  background: #46475b;
+}
+.header_circle_left{
+  width:2400rpx;
+  height:2400rpx;
+  border-radius: 50%;
+  z-index: 20;
+  position:absolute;
+  top:-2250rpx;
+  left:-122%;
+  background-color:#c8ccff;
+}
+.header_circle_right{
+  width:2400rpx;
+  height:2400rpx;
+  border-radius: 50%;
+  z-index: 20;
+  position:absolute;
+  top:-2255rpx;
+  left:-97%;
+  background-color:#87d6ff;
+}
+.detail_intro{
+  position:relative;
+  top:-186rpx;
+  text-align: center;
+}
+.userinfo {  
+  position: relative;
+  width: 750rpx;  
+  height: 320rpx;   
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;
+  z-index: 999;
+}  
+  
+.userinfo-avatar {  
+  overflow:hidden;
+  display: block;  
+  width: 240rpx;  
+  height: 240rpx;  
+  margin: 20rpx;  
+  margin-top: 50rpx;  
+  border-radius: 50%;  
+  border: 2px solid #c8ccff;
+  border-left-color:#c8ccff;
+  border-right-color: #87d6ff;
+  box-shadow: 3px 10px 10px rgba(0, 0, 0, 0.2);
+}
+.teacher-img{
+  width: 240rpx;
+  height:240rpx;
+}
+.detail_name{
+  font-size: 16px;
+  font-weight: bold;
+  color:#112f4e;
+}
+.detail_stars{
+  margin-top:30rpx;
+}
+.star_item{
+  width:40rpx;
+  height:40rpx;
+}
+.detail_info{
+  font-size:14px;
+  color:#545888;
+  margin-top:30rpx;
+  line-height: 40rpx;
+}
+.detail_icon{
+  height:40rpx;
+  width:40rpx;
+  vertical-align: middle;
+}
+.detail_txt{
+  font-size:14px;
+  color:#fff;
+  background-color: #8587aa;
+  margin:45rpx;
+  padding:30rpx;
+  text-align: left;
+  max-height:450rpx;
+  overflow-y: scroll;
+  border-radius: 5px;
+  line-height: 20px;
+}
+.detail_btns{
+  text-align: left;
+  margin: 0 45rpx;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.detail_btn{
+  width:65rpx;
+  height:65rpx;
+  vertical-align: middle;
+}

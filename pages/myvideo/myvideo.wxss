@@ -12,7 +12,7 @@ video{
   color:#ffffff;
   z-index: 98;
   padding:10px 15px 0 15px;
-  font-size:36rpx;
+  font-size:16px;
   display: -webkit-box; 
   line-height: 42rpx;
   word-break: break-all;
@@ -77,4 +77,7 @@ video{
   padding:0 3px;
   position: relative;
   right:10px;
+}
+.video_container{
+  padding-top:47px;
 }

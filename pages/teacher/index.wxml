@@ -1,0 +1,113 @@
+<!--pages/teacher/index.wxml-->
+<view class="popup_container {{activepop == true ? 'pop_active' : ''}}">
+<!-- 年级 -->
+  <view class='gradeContainer'>
+    <view class='tags_title'>
+      年级
+    </view>
+    <radio-group bindchange="gradeValChange">
+      <block wx:for="{{gradeArr}}" wx:key="item.value">
+        <view class=" item">
+          <label class="radio {{item.checked?'is_grade_checked':''}}">
+            <radio value="{{item.value}}" checked="{{item.checked}}" hidden="false" />{{item.value}}
+          </label>
+        </view>
+      </block>
+    </radio-group>
+  </view>
+  <!-- 科目 -->
+  <view class='gradeContainer'>
+    <view class='tags_title'>
+      科目
+    </view>
+    <radio-group bindchange="subValChange">
+      <block wx:for="{{subjectArr}}" wx:key="item.value">
+        <view class=" item">
+          <label class="radio {{item.checked?'is_grade_checked':''}}">
+            <radio value="{{item.value}}" checked="{{item.checked}}" hidden="false" />{{item.value}}
+          </label>
+        </view>
+      </block>
+    </radio-group>
+  </view>
+  <!-- 按钮区域 -->
+  <view class='btn-container'>
+    <button class='btn-reset' bindtap='resetChoose'>重置</button>
+    <button class='btn-confirm' bindtap='confirmChoose'>确定</button>
+  </view>
+</view>
+<view class="popup_mask {{activepop == true ? 'pop_active' : ''}}" bindtap='handlePop'>
+</view>
+<view class='main_container'>
+  <!-- 头部 -->
+  <view class='teacher_header'>
+    <view class='header_more'>
+      <image src='../../img/more.svg' class='header_more_img' bindtap='handlePop'></image>
+    </view>
+    <view class='header_tab'>
+      <block wx:for="{{tabs}}" wx:key="*this">
+        <view id="{{index}}" class="teacher-navbar__item {{activeIndex == index ? 'teacher-bar__item_on' : ''}}" bindtap="tabClick">
+          <view class="teacher-navbar__title">{{item}}</view>
+        </view>
+      </block>
+      <view class="teacher-navbar__slider" style="transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <view class='header_search'>
+      <image src='../../img/search.svg' class='header_more_img'></image>
+    </view>
+  </view>
+
+  <!--列表区域  -->
+  <view class='teacher_container'>
+    <navigator url="/pages/teacher/teacherDetail?id={{item.id}}&&subject={{item.subject}}" wx:for="{{teacherList}}" wx:key="id">
+      <view class='teacher_card' hover-class='teacher_card_hover'>
+        <view class='teacher_up'>
+          <view class='userinfo'>
+            <view class='userinfo-avatar'>
+              <image src='{{item.bimg}}' class='teacher_img'></image>
+            </view>
+          </view>
+          <view class='teacher_intro'>
+            <view class='teacher_name'>
+              {{item.tname}}
+              <text class='teacher_title' wx:if="{{item.title}}">{{item.title}}</text>
+            </view>
+            <view class='teacher_grade'>
+              {{item.dept}} {{item.subject}}
+            </view>
+          </view>
+          <!-- 星星 -->
+          <view class='detail_stars'>
+            <image src='../../img/star.png' class='star_item' wx:for="{{item.star}}" wx:key="*this"></image>
+            <image src='../../img/star_blank.png' class='star_item' wx:for="{{6-item.star}}" wx:key="*this"></image>
+          </view>
+        </view>
+        <!-- 下部按钮 -->
+        <view class='teacher_down'>
+          <view>
+            <image src='../../img/heart.svg' class='teacher_icon'></image> {{item.hot}}
+          </view>
+          <view>
+            <image src='../../img/student.svg' class='teacher_icon'></image> {{item.student_num}}
+          </view>
+          <view>
+            <image src='../../img/liuyan.svg' class='teacher_icon'></image>留言
+          </view>
+        </view>
+      </view>
+    </navigator>
+    <view class='tip_msg'>
+     {{tipMsg}}
+    </view>
+
+
+    <block wx:if="{{loading}}">
+      <image class="loading" src="/img/loading.png" />
+      <!-- <text>没有更多内容</text> -->
+    </block>
+  </view>
+
+
+
+
+</view>

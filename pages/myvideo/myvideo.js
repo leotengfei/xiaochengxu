@@ -1,4 +1,5 @@
 //获取应用实例
+var sliderWidth = 48; // 需要设置slider的宽度，用于计算中间位置
 const app = getApp();
 
 Page({
@@ -6,6 +7,10 @@ Page({
     // this.videoContext = wx.createVideoContext('myVideo')
   },
   data: {
+      tabs: ["推荐", "高中", "初中", "放学别跑"],
+      activeIndex: 0,
+      sliderOffset: 0,
+      sliderLeft: 0,
       prevVideoId:'',
       curVideoId:'',
       prevIdx:-1,
@@ -16,7 +21,7 @@ Page({
           videoId:'v001',
           poster:'http://ovqkwdw8s.bkt.clouddn.com/juesheng.jpg',
           intro:'决胜高考宣传片',
-          videoUrl:'http://owvvfr97r.bkt.clouddn.com/%E5%86%B3%E8%83%9C%E9%AB%98%E8%80%8320180421.mp4',
+          videoUrl:'https://vjs.zencdn.net/v/oceans.mp4',
           zanNum:999,
           iszan:false,
           isClicked:false,
@@ -26,7 +31,7 @@ Page({
           videoId: 'v002',
           poster: 'http://ovqkwdw8s.bkt.clouddn.com/fangxuebiepao.jpg',
           intro: '《放学别跑第1期》——父母是怎么套路你红包的。',
-          videoUrl: 'http://owvvfr97r.bkt.clouddn.com/fxbp1.mp4',
+          videoUrl: 'https://vjs.zencdn.net/v/oceans.mp4',
           zanNum: 50,
           iszan: false,
           isClicked: false,
@@ -43,6 +48,50 @@ Page({
           isShouCang: false
         }
       ]
+  },
+  onLoad: function () {
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
+
+    // 发送请求
+    this.freshData();
+
+  },
+  freshData:function(){
+    // 更新页面数据
+    var that=this;
+    wx.request({
+      url: 'https://mokey.club/video/index',
+      method: 'POST',
+      data: {
+        grade: that.data.tabs[that.data.activeIndex],
+        list: 1,
+        listRow: 10,
+        uid: 8
+      },
+      success: function (res) {
+        console.log(res)
+      }
+    })
+  },
+  tabClick: function (e) {
+    var that = this;
+    var category = '推荐';
+    category = that.data.tabs[e.currentTarget.id]
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id,
+      cur_start: 0,
+      category: category
+    });
+    that.freshData();
   },
   startPlay: function (e) {//图片上按钮点击播放事件
     var curVideoId = e.currentTarget.dataset.vid;

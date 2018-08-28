@@ -7,7 +7,7 @@ Page({
     gradeArr:[
       { value: '小学', checked: false },
       { value: '初中', checked: false },
-      { value: '高中', checked: false },
+      { value: '高中', checked: false }
     ],
     grade:'',
     allGoodsFilte: [],

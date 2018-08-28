@@ -1,0 +1,66 @@
+<!--pages/teacher/course.wxml-->
+<view class='course_container'>
+  <block wx:for="{{course}}" wx:key="*this">
+    <view class='course_card'>
+      <view>
+        <image src='../../img/course.svg' class='course_icon'></image>
+      </view>
+      <view class='course_info'>
+        <view class='course_title'>
+          {{item.grade}}{{item.subject}}
+          <text class='course_tag1'>暑假班</text>
+          <text class='course_tag2'>复习班</text>
+        </view>
+        <view class='course_time'>
+          {{item.open_time}}到{{item.end_time}}
+        </view>
+        <view class='course_time'>
+          {{item.gtime}}
+        </view>
+      </view>
+      <view>
+        <view class='course_btn' data-fullname="{{item.full_name}}" bindtap='showMap'>
+          <image src='../../img/location.svg' class='course_location'></image>  {{item.campus}}
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class='tip_msg' hidden="{{noCourse}}">暂时没有课程</view>
+
+  <block wx:for="{{videos}}" wx:key="*this">
+    <view class='course_card'>
+      <view>
+        <image src='http://wxxk.org/video/img/{{item.imgUrl}}' class='video_img'></image>
+      </view>
+      <view class='course_info'>
+        <view class='course_title'>
+          {{item.cname}}
+          <text class='course_tag1'>{{item.tag[0]}}</text>
+        </view>
+        <view class='course_time'>
+          {{item.intro}}
+        </view>
+        <text class='course_tag2'>共{{item.total}}节</text>
+      </view>
+      <view>
+        <view class='course_btn' data-fullname="{{item.full_name}}" bindtap='showMap'>
+          <image src='../../img/video.png' class='course_location'></image> 播放
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class='tip_msg' hidden="{{noVideo}}">暂时没有视频</view>
+
+  <!-- 地图模态框 -->
+  <view class='campus_map' hidden="{{mapHidden}}">
+      <map
+      id="myMap"
+      style="width: 100%; height: 90vh;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      show-location
+    ></map>
+    <button type='warn' class='close_btn' bindtap='close_btn'>关闭地图</button>
+  </view>
+</view>

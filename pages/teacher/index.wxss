@@ -1,0 +1,306 @@
+/* pages/teacher/index.wxss */
+/* 弹出框 */
+.popup_container{
+  position: fixed;
+  right:0;
+  width: 72%;
+  height: 100vh;
+  background-color: #ffffff;
+  transform: translateX(100%);
+  transition: all .25s ease;
+  z-index: 999;
+}
+.pop_active{
+  transform: translateX(0);
+  transition: all .25s ease;
+}
+.popup_mask{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  transition: all .25s ease;
+  background:rgba(0,0,0,0.4);
+  display:none;
+  z-index: 900;
+}
+.pop_active{
+  display: block;
+}
+
+/* header */
+.teacher_header{
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  z-index: 500;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  background: #ffffff;
+  padding:0 40rpx;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .8);
+}
+.header_more{
+  width:250rpx;
+}
+.header_more_img{
+  width:45rpx;
+  height:45rpx;
+}
+.header_tab{
+  width: 360rpx;
+  display: flex;
+}
+.header_search{
+  font-size: 15px;
+  padding-left:25rpx;
+  width:60rpx;
+}
+
+/* weui  css */
+.teacher-navbar__item {
+  position: relative;
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  text-align: center;
+  font-size: 0;
+  padding-bottom:30rpx;
+}
+
+.teacher-navbar__item.teacher-bar__item_on {
+  color: #404c85;
+}
+
+.teacher-navbar__slider {
+  position: absolute;
+  content: " ";
+  left: 0;
+  bottom: 0;
+  width: 2em;
+  height: 3px;
+  background-color: #404c85;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.teacher-navbar__title {
+  display: inline-block;
+  font-size: 15px;
+  max-width: 8em;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+/* 教师卡片 */
+.teacher_container{
+  padding-top:35px;
+  background-color: #e0e0e0;
+  /* height:100vh; */
+}
+.teacher_card{
+  margin-bottom:10rpx;
+  background-color: #fff;
+  padding:33rpx 47rpx 16rpx 47rpx;
+  font-size:14px;
+  color:#1c284e;
+}
+.teacher_up{
+  display: flex;
+}
+.userinfo {  
+  position: relative;  
+  width: 130rpx;  
+  height: 190rpx;   
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+}  
+  
+.userinfo-avatar {  
+  overflow:hidden;  
+  display: block;  
+  width: 140rpx;  
+  height: 140rpx;  
+  margin: 20rpx;  
+  border-radius: 50%;  
+  border: 2px solid #97a1d1;
+}
+.teacher_img{
+  width:140rpx;
+  height:140rpx;
+}
+.teacher_intro{
+  padding:20rpx 0 20rpx 60rpx;
+  flex-grow: 1;
+}
+.teacher_name{
+  font-size:16px;
+  font-weight: bold;
+  margin-top:18rpx;
+}
+.teacher_title{
+  font-size:14px;
+  font-weight: normal;
+  background-color: #82BEFA;
+  color:#ffffff;
+  padding:0 5rpx;
+  border-radius: 5px;
+  margin-left:30rpx;
+}
+.teacher_grade{
+  font-size:14px;
+  padding-top:35rpx;
+}
+.detail_stars{
+  margin-top:40rpx;
+}
+.star_item{
+  width:28rpx;
+  height:28rpx;
+}
+
+.teacher_down{
+  border-top:1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+.teacher_icon{
+  width:28rpx;
+  height:28rpx;
+  vertical-align: middle;
+}
+
+
+
+.teacher_card_hover{
+  background: radial-gradient(120rpx at center, #97A1D1 0%,#97A1D1 99%, #C1C9E5 100%);
+  color:#ffffff!important;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.loading {
+  -webkit-transform: rotate(360deg);
+  animation: rotation 1.5s linear infinite;
+  -moz-animation: rotation 1.5s linear infinite;
+  -webkit-animation: rotation 1.5s linear infinite;
+  -o-animation: rotation 1.5s linear infinite;
+  width: 60rpx;
+  height: 60rpx;
+  display: block;
+  margin: 10rpx auto;
+}
+
+/* 按钮css */
+/*标签自定义css  */
+.gradeContainer{
+  color: #272D77;
+  padding:35rpx 50rpx;
+  background: #fff;
+  margin-bottom:10rpx;
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: -30rpx;
+}
+.tagContainer{
+  color: #272D77;
+  padding:35rpx 50rpx;
+  background: #fff;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.tags_title{
+  margin-bottom:40rpx;
+  color:#6d6d6d;
+}
+.tags_title_badge{
+  font-size: 12px;
+  color:#404580;
+  position: relative;
+  top:-5px;
+}
+
+.item{
+  display: inline-block;
+  margin-right: 30rpx;
+  margin-bottom:18rpx;
+}
+label {
+  border: 4rpx solid #404580;
+  background: #fff;
+  padding: 15rpx 0;
+  font-size: 14px;
+  border-radius: 4px;
+  display: inline-block;
+  width: 100rpx;
+  text-align: center;
+}
+ 
+.is_grade_checked {
+  border: 4rpx solid #404580;
+  color: #fff;
+  background: #404580;
+}
+
+
+.is_checked {
+  border: 4rpx solid #7579af;
+  color: #fff;
+  background: #7579af;
+}
+
+.chageTags{
+  text-align: right;
+  color: #acacac;
+  font-size: 16px;
+  padding:0 20rpx;
+}
+
+.chageTags image{
+  width: 30rpx;
+  height: 30rpx;
+  padding:0 10rpx;
+}
+.btn-container{
+  position: absolute;
+  bottom:0;
+  width: 100%;
+}
+.btn-reset{
+  float:left;
+  width:50%;
+  border-radius: 0;
+}
+.btn-confirm{
+  float:left;
+  width:50%;
+  background-color: #404580;
+  color:#ffffff;
+   border-radius: 0;
+}
+.tip_msg{
+  text-align: center;
+  background-color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top:30px;
+  color:#6d6d6d;
+}

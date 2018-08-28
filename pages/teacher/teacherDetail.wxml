@@ -1,0 +1,44 @@
+<!--pages/teacher/teacherDetail.wxml-->
+<view class='detail_header'>
+  <view class='header_circle'></view>
+  <view class='header_circle_left'></view>
+  <view class='header_circle_right'></view>
+</view>
+<!-- 教师信息 -->
+<view class='detail_intro'>
+  <view class='userinfo'>
+    <view class='userinfo-avatar'>
+      <image src='{{teacherInfo.bimg}}' class='teacher-img'></image>
+    </view>
+  </view>
+  <view class='detail_name'>
+    {{teacherInfo.tname}} {{teacherInfo.dept}}{{teacherInfo.subject}}
+  </view>
+  <!-- 星星 -->
+  <view class='detail_stars'>
+    <image src='../../img/star.png' class='star_item' wx:for="{{teacherInfo.star}}" wx:key="*this"></image>
+    <image src='../../img/star_blank.png' class='star_item' wx:for="{{6-teacherInfo.star}}" wx:key="*this"></image>
+  </view>
+  <view>
+    <!-- 信息 -->
+    <view class='detail_info'>
+      教龄：{{teacherInfo.year}}年 课时：{{teacherInfo.teach_num}}小时
+      <image src='../../img/student.svg' class='detail_icon'></image> {{teacherInfo.student_num}}人
+      <image src='../../img/heart.svg' class='detail_icon'></image> {{teacherInfo.hot}}
+    </view>
+    <view class='detail_txt'>
+      {{teacherInfo.introduction}}
+    </view>
+  </view>
+  <!-- 按钮 -->
+  <view class='detail_btns'>
+    <view>
+      <image src='../../img/luntan.png' class='detail_btn'></image>
+      查看留言
+    </view>
+    <navigator url="/pages/teacher/course?id={{teacherInfo.id}}&&subject={{teacherInfo.subject}}">
+      <image src='../../img/kebiao.svg' class='detail_btn'></image>
+      查看课程
+    </navigator>
+  </view>
+</view>
