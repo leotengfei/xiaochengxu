@@ -1,6 +1,7 @@
 //获取应用实例
 var sliderWidth = 48; // 需要设置slider的宽度，用于计算中间位置
 const app = getApp();
+var uid = wx.getStorageSync('uid') || '';
 
 Page({
   onReady: function (res) {
@@ -61,12 +62,6 @@ Page({
     });
 
     // 发送请求
-    this.freshData();
-
-  },
-  freshData:function(){
-    // 更新页面数据
-    var that=this;
     wx.request({
       url: 'https://mokey.club/video/index',
       method: 'POST',
@@ -74,12 +69,13 @@ Page({
         grade: that.data.tabs[that.data.activeIndex],
         list: 1,
         listRow: 10,
-        uid: 8
+        uid: uid
       },
       success: function (res) {
         console.log(res)
       }
     })
+
   },
   tabClick: function (e) {
     var that = this;

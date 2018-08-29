@@ -1,0 +1,82 @@
+/* pages/teacher/search.wxss */
+.wxSearch-section{
+  background-color: #fff;
+  padding: 5px 10px;
+  border: 1px #eee solid;
+  position: relative;
+}
+.wxSearch-pancel{
+  display: flex;
+  flex-direction: row;
+}
+.search_icon{
+  position: absolute;
+  top:50%;
+  margin-top:-8px;
+  left:17px;
+}
+.wxSearch-input{
+  flex-grow: 1;
+  padding: 5px 10px;
+  padding-left:50rpx;
+  border-radius: 30px;
+  font-size: 16px;
+  background-color: #eee;
+}
+.wxSearch-button{
+  border: none !important;
+  color: #545888 !important;
+  font-size: 16px !important;
+}
+.history_container{
+  padding:25rpx 20rpx;
+  color:#383838;
+}
+.his_title{
+  display: flex;
+}
+.his_left{
+  flex-grow: 1;
+  font-size: 15px;
+
+}
+.his_right{
+  color:#E83A3C;
+  font-size: 14px;
+  padding-right:20rpx;
+  line-height: 20px;
+}
+.tag_container{
+  padding-top:30rpx;
+  padding-bottom:50rpx;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+.tag_item{
+  background-color: #F8F8F8;
+  padding:5rpx 15rpx;
+  margin-top:15rpx;
+  margin-right:15rpx;
+}
+
+/* 搜索结果列表 */
+.result_container{
+  padding: 0 15rpx;
+  font-size:14px;
+}
+.result_item{
+  display: flex;
+  padding:30rpx 15rpx;
+  border-bottom:1px solid #eee;
+}
+.result_tname{
+  flex-grow: 1;
+}
+.item_tag{
+  background-color: #F8F8F8;
+  padding:0 20rpx;
+  border-radius: 5px;
+  margin-right:10rpx;
+  color:#ACACAC;
+}

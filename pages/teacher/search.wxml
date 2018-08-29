@@ -1,0 +1,40 @@
+<!--pages/teacher/search.wxml-->
+<view class="wxSearch-section">
+  <view class="wxSearch-pancel">
+    <icon type="search" size="16" class="search_icon"/>
+    <input value="{{keyword}}" bindblur="searchBlur" class="wxSearch-input" placeholder="搜索" confirm-type="search"/>
+    <button class="wxSearch-button" bindtap="searchFn" size="mini" plain="true">搜索</button>
+  </view>
+</view>
+<!-- 历史 -->
+<view class='history_container' wx:if="{{!isSearched}}">
+  <!-- 历史搜索 -->
+  <view class='his_title'>
+    <view class='his_left'>历史搜索</view>
+    <view class='his_right' bindtap='clearHis'>清除</view>
+  </view>
+  <view class='tag_container'>
+    <view wx:for="{{hisArr}}" wx:key="*this" class='tag_item'>
+      {{item}}
+    </view>
+  </view>
+  <!-- 热门搜索 -->
+  <view class='his_title'>
+    <view class='his_left'>热门搜索</view>
+    <view class='his_right' bindtap='changeHot'>换一批</view>
+  </view>
+  <view class='tag_container'>
+    <view wx:for="{{hotArr}}" wx:key="id" class='tag_item'>
+      {{item.keyword}}
+    </view>
+  </view>
+</view>
+<!-- 结果列表 -->
+<view wx:else class='result_container'>
+  <navigator open-type='reLaunch' url="/pages/teacher/teacherDetail?id={{item.id}}&&subject={{item.subject}}" wx:for="{{resultArr}}" wx:key="*this" class="result_item">
+    <view class='result_tname'>{{item.tname}}</view>
+    <view wx:if="{{item.title}}" class='item_tag'>{{item.title}}</view>
+    <view wx:if="{{item.dept}}" class='item_tag'>{{item.dept}}</view>
+    <view wx:if="{{item.subject}}" class='item_tag'>{{item.subject}}</view>
+  </navigator>
+</view>

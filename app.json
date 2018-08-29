@@ -1,14 +1,15 @@
 {
   "pages": [
+    "pages/teacher/search",
+    "pages/teacher/index",
+    "pages/teacher/teacherDetail",
+    "pages/teacher/course",
     "pages/myvideo/myvideo",
     "pages/videoDetail/videoDetail",
     "pages/index/index",
     "pages/index/second",
     "pages/news/news",
     "pages/newsDetail/newsDetail",
-    "pages/teacher/index",
-    "pages/teacher/teacherDetail",
-    "pages/teacher/course",
     "pages/wode/wode",
     "pages/wode/wenti",
     "pages/wode/huida",

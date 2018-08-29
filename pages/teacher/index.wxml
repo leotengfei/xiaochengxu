@@ -52,9 +52,9 @@
       </block>
       <view class="teacher-navbar__slider" style="transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
     </view>
-    <view class='header_search'>
+    <navigator class='header_search' url='/pages/teacher/search'>
       <image src='../../img/search.svg' class='header_more_img'></image>
-    </view>
+    </navigator>
   </view>
 
   <!--列表区域  -->
