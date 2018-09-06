@@ -64,7 +64,7 @@
         <view class='teacher_up'>
           <view class='userinfo'>
             <view class='userinfo-avatar'>
-              <image src='{{item.bimg}}' class='teacher_img'></image>
+              <image src='{{item.bimg}}' class='teacher_img' lazy-load='true'></image>
             </view>
           </view>
           <view class='teacher_intro'>

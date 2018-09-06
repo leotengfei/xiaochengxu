@@ -14,7 +14,7 @@
     <view class='his_right' bindtap='clearHis'>清除</view>
   </view>
   <view class='tag_container'>
-    <view wx:for="{{hisArr}}" wx:key="*this" class='tag_item'>
+    <view wx:for="{{hisArr}}" wx:key="*this" class='tag_item' data-keyword='{{item}}' bindtap='handleTag'>
       {{item}}
     </view>
   </view>
@@ -24,17 +24,20 @@
     <view class='his_right' bindtap='changeHot'>换一批</view>
   </view>
   <view class='tag_container'>
-    <view wx:for="{{hotArr}}" wx:key="id" class='tag_item'>
+    <view wx:for="{{hotArr}}" wx:key="id" class='tag_item' data-keyword='{{item.keyword}}' bindtap='handleTag'>
       {{item.keyword}}
     </view>
   </view>
 </view>
 <!-- 结果列表 -->
 <view wx:else class='result_container'>
-  <navigator open-type='reLaunch' url="/pages/teacher/teacherDetail?id={{item.id}}&&subject={{item.subject}}" wx:for="{{resultArr}}" wx:key="*this" class="result_item">
+  <navigator url="/pages/teacher/teacherDetail?id={{item.id}}&&subject={{item.subject}}" wx:for="{{resultArr}}" wx:key="*this" class="result_item">
     <view class='result_tname'>{{item.tname}}</view>
     <view wx:if="{{item.title}}" class='item_tag'>{{item.title}}</view>
     <view wx:if="{{item.dept}}" class='item_tag'>{{item.dept}}</view>
     <view wx:if="{{item.subject}}" class='item_tag'>{{item.subject}}</view>
   </navigator>
+  <view wx:if='{{resultArr.length===0}}' class='tip_msg'>
+    没有找到相关的老师
+  </view>
 </view>

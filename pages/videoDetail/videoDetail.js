@@ -7,73 +7,38 @@ Page({
   */
   inputValue: '',
   data: {
+    videoInfo:{},
+    current_src:'',
+    current_index:0,
     scroll_h: '0',
-    videoCurrentTime: 0,
-    videonow: {},
-    videoid: '',
-    videoCommit:[
-      {
-        avatarUrl:'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erTpFLEgOdria6PZRNzZHCfibib7bVNicu0SGLzfVsFbrRfmnVmvyhcUVbjqwY9u3xUjtYHAw75vrMNtQ/0',
-        nickName:'昵称1',
-        content:'深刻的疗法撒旦，撒旦就分开了说的，ds.jsdfjk是看得开kljsdfk k,LKjkdjs flkj 看见的是风口浪尖款到即发看看，水电费健康，款到即发流口水地方。家里的附近双卡双待角度思考飞机上看了对方数据库，就看电视积分卡史蒂夫，立即受到法律快速的减肥，但是看了飞机上看的风景。是对付恐惧老师款到即发框架，但是房价开始地方。'
-      },
-      {
-        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erTpFLEgOdria6PZRNzZHCfibib7bVNicu0SGLzfVsFbrRfmnVmvyhcUVbjqwY9u3xUjtYHAw75vrMNtQ/0',
-        nickName: '昵称2',
-        content: '深刻的疗法撒旦，撒旦就分开了说的，ds.jsdfjk是看得开kljsdfk k,LKjkdjs flkj 看见的是风口浪尖款到即发看看，水电费健康，款到即发流口水地方。家里的附近双卡双待角度思考飞机上看了对方数据库，就看电视积分卡史蒂夫，立即受到法律快速的减肥，但是看了飞机上看的风景。是对付恐惧老师款到即发框架，但是房价开始地方。'
-      },
-      {
-        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erTpFLEgOdria6PZRNzZHCfibib7bVNicu0SGLzfVsFbrRfmnVmvyhcUVbjqwY9u3xUjtYHAw75vrMNtQ/0',
-        nickName: '昵称3',
-        content: '深刻的疗法撒旦，撒旦就分开了说的，ds.jsdfjk是看得开kljsdfk k,LKjkdjs flkj 看见的是风口浪尖款到即发看看，水电费健康，款到即发流口水地方。家里的附近双卡双待角度思考飞机上看了对方数据库，就看电视积分卡史蒂夫，立即受到法律快速的减肥，但是看了飞机上看的风景。是对付恐惧老师款到即发框架，但是房价开始地方。'
-      },
-      {
-        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erTpFLEgOdria6PZRNzZHCfibib7bVNicu0SGLzfVsFbrRfmnVmvyhcUVbjqwY9u3xUjtYHAw75vrMNtQ/0',
-        nickName: '昵称4',
-        content: '深刻的疗法撒旦，撒旦就分开了说的，ds.jsdfjk是看得开kljsdfk k,LKjkdjs flkj 看见的是风口浪尖款到即发看看，水电费健康，款到即发流口水地方。家里的附近双卡双待角度思考飞机上看了对方数据库，就看电视积分卡史蒂夫，立即受到法律快速的减肥，但是看了飞机上看的风景。是对付恐惧老师款到即发框架，但是房价开始地方。'
-      },
-      {
-        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erTpFLEgOdria6PZRNzZHCfibib7bVNicu0SGLzfVsFbrRfmnVmvyhcUVbjqwY9u3xUjtYHAw75vrMNtQ/0',
-        nickName: '昵称5',
-        content: '深刻的疗法撒旦，撒旦就分开了说的，ds.jsdfjk是看得开kljsdfk k,LKjkdjs flkj 看见的是风口浪尖款到即发看看，水电费健康，款到即发流口水地方。家里的附近双卡双待角度思考飞机上看了对方数据库，就看电视积分卡史蒂夫，立即受到法律快速的减肥，但是看了飞机上看的风景。是对付恐惧老师款到即发框架，但是房价开始地方。'
-      },
-      {
-        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erTpFLEgOdria6PZRNzZHCfibib7bVNicu0SGLzfVsFbrRfmnVmvyhcUVbjqwY9u3xUjtYHAw75vrMNtQ/0',
-        nickName: '昵称6',
-        content: '深刻的疗法撒旦，撒旦就分开了说的，ds.jsdfjk是看得开kljsdfk k,LKjkdjs flkj 看见的是风口浪尖款到即发看看，水电费健康，款到即发流口水地方。家里的附近双卡双待角度思考飞机上看了对方数据库，就看电视积分卡史蒂夫，立即受到法律快速的减肥，但是看了飞机上看的风景。是对付恐惧老师款到即发框架，但是房价开始地方。'
-      }
-    ]
+    videoCurrentTime: 0
   },
   onLoad: function (options) {
     var that=this;
+    var uid = wx.getStorageSync('uid') || '';
     console.log(options.videoid)
-    if(options.videoCurrentTime&&app.globalData.videoDetail){
-      //通过小程序调转过来的方式，获取全局的对象中的数据
-      this.setData({
-        videoCurrentTime: options.videoCurrentTime,
-        videonow: app.globalData.videoDetail,
-        videoid:options.videoid
-      })
-      console.log("通过页面跳转方式进入");
-    }else{
-      //通过分享链接点击进入，获取videoid,发送ajax请求获取数据
-      console.log("通过分享链接方式进入");
-      console.log(options.videoCurrentTime, app.globalData.videoDetail)
-      console.log(options.videoid);
-      //ajax
-      var fakedata = {
-        videoId: 'v001',
-        poster: 'http://ovqkwdw8s.bkt.clouddn.com/xiaochengxu.jpg',
-        intro: '这是通过分享链接进来看到的视频！！！',
-        videoUrl: 'http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400',
-        zanNum: 1000,
-        isClicked: false
+    wx.showLoading({
+      title: '加载中...',
+    })
+    // 发送ajax请求
+    wx.request({
+      url: 'https://mokey.club/video/videoInfo',
+      method:'POST',
+      data:{
+        cid: options.videoid,
+        uid:uid
+      },
+      success:function(res){
+        console.log(res)
+        wx.hideLoading();
+        that.setData({
+          videoInfo:res.data,
+          current_src: res.data.detail[0].videoUrl,
+        })
+        console.log(that.data.videoInfo)
+
       }
-      this.setData({
-        videonow:fakedata,
-        videoid: options.videoid
-      })
-    }
+    })
   },
   onReady: function (res) {
     var that=this;
@@ -114,14 +79,114 @@ Page({
       }).exec()
     }).exec()
   },
+  changeVideo:function(e){
+    // 选集方法
+    console.log(e.currentTarget.dataset.idx);
+    var that=this;
+    var idx = e.currentTarget.dataset.idx;
+    this.videoContext = wx.createVideoContext("myVideo");
+    this.videoContext.pause();
+    this.setData({
+      current_index: idx,
+      current_src: that.data.videoInfo.detail[idx].videoUrl,
+    });
+    this.videoContext.pause();
+  },
+  bindZan: function (e) {
+    var that = this;
+    var uid = wx.getStorageSync('uid') || '';
+    var param = {};
+    var string = "videoInfo.like_count";
+    var string_iszan="videoInfo.isLike"
+    var cid = that.data.videoInfo.cid;
+    if (uid) {
+      // 如果已经登陆
+      wx.request({
+        url: 'https://mokey.club/video/like',
+        method: 'POST',
+        data: {
+          uid: uid,
+          cid: cid
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.status === 2) {
+            //点赞成功，修改数量
+            param[string] = ++that.data.videoInfo.like_count;;
+            param[string_iszan] = true;
+            wx.showToast({
+              title: '点赞成功',
+              icon: 'success',
+              duration: 500
+            })
+          } else {
+            //如果赞过，赞数字减1，iszan变为false
+            param[string] = --that.data.videoInfo.like_count;
+            param[string_iszan] = false;
+            wx.showToast({
+              title: '取消点赞',
+              icon: 'success',
+              duration: 500
+            })
+          }
+          that.setData(param);
+        }
+      })
+    } else {
+      // 如果没有登陆，跳转到登录页面
+      wx.navigateTo({
+        url: '/pages/index/index'
+      })
+    }
+  },
+  shoucang: function (e) {
+    var that = this;
+    var uid = wx.getStorageSync('uid') || '';
+    var param = {};
+    var string = "videoInfo.isCollect";
+    var cid = that.data.videoInfo.cid;
+    if (uid) {
+      // 如果已经登陆
+      wx.request({
+        url: 'https://mokey.club/video/collect',
+        method: 'POST',
+        data: {
+          cid: cid,
+          uid: uid
+        },
+        success: function (res) {
+          console.log(res.data.status)
+          if (res.data.status === 2) {
+            //如果没有收藏，isCollect变为true
+            param[string] = true;
+            wx.showToast({
+              title: '收藏成功',
+              icon: 'success',
+              duration: 500
+            })
+          } else {
+            //如果收藏过，isCollect变为false
+            param[string] = false;
+            wx.showToast({
+              title: '取消收藏',
+              icon: 'success',
+              duration: 500
+            })
+          }
+          that.setData(param);
+          // console.log(that.data.videoList)
+        }
+      })
+
+    } else {
+      console.log('没有登陆')
+      wx.navigateTo({
+        url: '/pages/index/index'
+      })
+    }
+  },
   bindInputBlur: function (e) {
     this.inputValue = e.detail.value
-  },
-  bindSendDanmu: function () {
-    this.videoContext.sendDanmu({
-      text: this.inputValue,
-      color: getRandomColor()
-    })
   },
   //三点分享
   onShareAppMessage: function () {

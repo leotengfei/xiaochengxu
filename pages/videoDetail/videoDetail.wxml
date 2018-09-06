@@ -1,22 +1,38 @@
 <!--pages/myvideo/myvideo.wxml-->
 <view class="section">
-  <video id="myVideo" src="{{videonow.videoUrl}}" autoplay='true' poster="{{videonow.poster}}" controls objectFit="fill"></video>
+  <video id="myVideo" src="{{current_src}}" autoplay='true' controls objectFit="fill"></video>
   <scroll-view scroll-y class="videoPinglun" style='height:{{scroll_h}}'>
-    <view class="review">
-      <image src="../../img/zan.svg" class="review_img" bindtap='bindZan'></image>
-      <view class="videoBadge" wx:if="{{item.zanNum}}">{{item.zanNum>999?999+"+":item.zanNum}}</view>
-    </view>
     <view class="videoIntro">
-      <view class="videoIntro_title">简介：</view>
-      <view class="videoIntro_p">这是一段视频的简介lhjkljhkh看来附近的路上风景 看来大家是否啦骄傲斯科拉交电费了阿萨法了解撒旦法家里舒服看见啦时间点卡收费就爱上了</view>
+      <view class="videoIntro_p">
+        <view class='videoIntro_p_title'>
+          <view>{{videoInfo.cname}}</view>
+          <view>{{videoInfo.teacher}}</view>
+        </view>
+        <view class='videoIntro_p_body'>
+          {{videoInfo.intro}}
+        </view>
+      </view>
+    </view>
+    <view class="review">
+      <image src="../../img/{{videoInfo.isLike?'zan_d':'heart'}}.svg" class="review_img" bindtap='bindZan'></image>
+      <view class="videoBadge" wx:if="{{videoInfo.like_count}}">{{videoInfo.like_count>999?999+"+":videoInfo.like_count}}</view>
+      <image src="../../img/{{videoInfo.isCollect?'shoucang_yellow':'shoucang_d'}}.svg" class="review_img" bindtap='shoucang'></image>
+    </view>
+    <view class='video_btns'>
+      <block wx:for="{{videoInfo.detail}}" wx:key="*this">
+        <view class="video_btns_item {{index===current_index?'video_btn_active':''}}"  data-idx="{{index}}" bindtap='changeVideo'>
+          {{item.episode}}
+          <text>{{item.description}}</text>
+        </view>
+        </block>
     </view>
     <view class="pinglun_area">
-      <view>{{videoCommit.length}} 评论</view>
-      <block wx:for='{{videoCommit}}' wx:key='{{index}}'>
+      <view>{{videoInfo.countContent}} 评论</view>
+      <block wx:for='{{videoInfo.content}}' wx:key='{{index}}'>
         <view class='commit_item'>
           <view class='commit_img_box'>
-            <image src='{{item.avatarUrl}}' lazy-load='true' class='commit_img'></image>
-            <text class='nickName'>{{item.nickName}}</text>
+            <image src='{{item.head_image}}' lazy-load='true' class='commit_img'></image>
+            <text class='nickName'>{{item.nickname}}</text>
           </view>
           <view class='content'>
             {{item.content}}

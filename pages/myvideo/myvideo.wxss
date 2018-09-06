@@ -1,6 +1,7 @@
 /* pages/myvideo/myvideo.wxss */
 video{
   width:750rpx;
+  height: 420rpx;
 }
 .fakeVideo{
   position: relative;

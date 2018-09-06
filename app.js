@@ -9,7 +9,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    videoDetial: {},
     tel:'',
     sessionId:'',
     uid:''

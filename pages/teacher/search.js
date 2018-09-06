@@ -6,38 +6,9 @@ Page({
    */
   data: {
     keyword:'',
-    hisArr: wx.getStorageSync("searchArr"),
-    hotArr:['高中', '英语', '放学别跑', '视频课', '化学', '邓亚磊', '李强', '王明', '数学', '语文'],
-    resultArr:[
-      {
-        id:1,
-        tname:"邓亚磊",
-        title:"校长",
-        dept:"高中",
-        subject:"英语"
-      },
-      {
-        id: 2,
-        tname: "徐静宜",
-        title:"项目主管",
-        dept: "高中",
-        subject: "英语"
-      },
-      {
-        id: 3,
-        tname: "田媛",
-        title:"师训主管",
-        dept: "高中",
-        subject: "英语"
-      },
-      {
-        id: 4,
-        tname: "刘欣",
-        title:"",
-        dept: "高中",
-        subject: "英语"
-      }
-  ],
+    hisArr: [],
+    hotArr:[],
+    resultArr:[],
     isSearched:false,
     list:1,
     total:0
@@ -51,21 +22,52 @@ Page({
   searchFn:function(){
     console.log(this.data.keyword)
     var that=this;
-    wx.request({
-      url: 'https://mokey.club/Teacher/searchTeacher',
-      method:'POST',
-      data:{
-        list:1,
-        listRows:10,
-        content:that.data.keyword
-      },
-      success:function(res){
-        console.log(res)
+    // 将搜索的关键字存入本地数组
+    var keyword=this.data.keyword;
+    var arr = wx.getStorageSync("searchArr") || [];
+    var isRepeat=false;
+    for(var i=0;i<arr.length;i++){
+      // 判断是否已经重复
+      if(keyword===arr[i]){
+        isRepeat=true
       }
-    })
+    }
+    if(that.data.keyword){
+      if(!isRepeat){
+        if (arr.length >= 10) {
+          // 当数组长度大于等于10的时候
+          arr.pop();
+        }
+        arr.unshift(that.data.keyword)
+        wx.setStorageSync("searchArr", arr)
+      }
+      wx.showLoading({
+        title: '加载中...',
+      })
+      wx.request({
+        url: 'https://mokey.club/Teacher/searchTeacher',
+        method: 'POST',
+        data: {
+          list: 1,
+          listRows: 10,
+          content: that.data.keyword
+        },
+        success: function (res) {
+          console.log(res.data.data)
+          console.log(wx.getStorageSync("searchArr"))
+          that.setData({
+            resultArr:res.data.data,
+            isSearched: true,
+            hisArr: arr
+          })
+          wx.hideLoading();
+        }
+      })
+    }
   },
   clearHis:function(){
-    wx.setStorageSync("searchArr", [])
+    wx.removeStorageSync("searchArr")
+    console.log(wx.getStorageSync("searchArr"))
     this.setData({
       hisArr:[]
     })
@@ -75,7 +77,8 @@ Page({
       title: '加载中...',
     })
     var that=this;
-    var pageNum=parseInt(this.data.total/10)+1
+    // 页码总数
+    var pageNum=Math.ceil(this.data.total/10)
     var currentList=this.data.list
     if(currentList<pageNum){
       currentList++
@@ -99,16 +102,69 @@ Page({
       }
     })
   },
+  handleTag:function(e){
+    // 点击标签事件
+    console.log(e.target.dataset.keyword)
+    var that = this;
+    // 将搜索的关键字存入本地数组
+    var keyword = e.target.dataset.keyword;
+    var arr = wx.getStorageSync("searchArr") || [];
+    var isRepeat = false;
+    for (var i = 0; i < arr.length; i++) {
+      // 判断是否已经重复
+      if (keyword === arr[i]) {
+        isRepeat = true
+      }
+    }
+    if (keyword) {
+      if (!isRepeat) {
+        if (arr.length >= 10) {
+          // 当数组长度大于等于10的时候
+          arr.pop();
+        }
+        arr.unshift(keyword)
+        wx.setStorageSync("searchArr", arr)
+      }
+      wx.showLoading({
+        title: '加载中...',
+      })
+      wx.request({
+        url: 'https://mokey.club/Teacher/searchTeacher',
+        method: 'POST',
+        data: {
+          list: 1,
+          listRows: 10,
+          content: keyword
+        },
+        success: function (res) {
+          console.log(res.data.data)
+          console.log(wx.getStorageSync("searchArr"))
+          console.log(that.data.hisArr)
+          that.setData({
+            resultArr: res.data.data,
+            isSearched: true,
+            hisArr: arr
+          })
+          console.log(that.data.hisArr)
+          wx.hideLoading();
+        }
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.setStorageSync("searchArr", this.data.hisArr)
     var that=this;
+    this.setData({
+      hisArr: wx.getStorageSync("searchArr")
+    })
     console.log(wx.getStorageSync("searchArr"))
     // wx.setStorageSync("searchArr", ["物理"])
-
+    wx.showLoading({
+      title: '加载中...',
+    })
     // 获取热门搜索数组
     wx.request({
       url: 'https://mokey.club/Teacher/hotKeyword',
@@ -123,6 +179,7 @@ Page({
           hotArr:res.data.data,
           total:res.data.num
         })
+        wx.hideLoading();
       }
     })
 

@@ -16,21 +16,27 @@
     <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
   </view>
 </view>
+
+<!-- 视频 -->
 <view class='video_container'>
-  <view wx:for="{{videoList}}" wx:for-index="index" wx:key="videoId">
-    <view class="fakeVideo" wx:if="{{!item.isClicked}}">
-      <text class="faketitle">{{item.intro}}</text>
-      <image src='../../img/fakeVideo_top.png' data-idx="{{index}}" data-vid="{{item.videoId}}" class="fakeVideo_top" bindtap='startPlay'></image>
+  <view wx:for="{{videoList}}" wx:for-index="index" wx:key="cid">
+  <!-- 视频图片封面 -->
+    <view class="fakeVideo" hidden="{{item.isClicked}}">
+      <text class="faketitle">{{item.cname+"  "+item.tag}}</text>
+      <image src='../../img/fakeVideo_top.png' data-idx="{{index}}" data-vid="{{'v'+item.cid}}" class="fakeVideo_top" bindtap='startPlay'></image>
       <view class="fakeVideo_mask"></view>
-      <image src="{{item.poster}}" class="fakeVideo_under"></image>
+      <image src="http://wxxk.org/video/img/{{item.imgUrl}}" class="fakeVideo_under"></image>
     </view>
-    <video wx:if="{{item.isClicked}}" id="{{item.videoId}}" src="{{item.videoUrl}}" poster="{{item.poster}}" controls objectFit="fill" data-videoid="{{item.videoId}}" bindtimeupdate='mycurrenttime'></video>
+    <!-- 视频元素 -->
+    <video  wx:if="{{item.isClicked}}" id="{{'v'+item.cid}}" src="{{item.detail.videoUrl}}" poster="http://wxxk.org/video/img/{{item.imgUrl}}" controls objectFit="fill" data-videoid="{{'v'+item.cid}}" bindtimeupdate='mycurrenttime'></video>
+
+    <!-- 点赞收藏分享 -->
     <view class="review">
-      <image src="../../img/{{item.iszan?'zan_d':'heart'}}.svg" class="review_img" data-index="{{index}}" bindtap='bindZan'></image>
-      <view class="videoBadge" wx:if="{{item.zanNum}}">{{item.zanNum>999?m1.parse(item.zanNum/1000)+"k":item.zanNum}}</view>
-      <image src="../../img/liuyan.svg" class="review_img" data-index="{{index}}" data-videoid="{{item.videoId}}" bindtap='toVideoDetail'></image>
-      <image src="../../img/{{item.isShouCang?'shoucang_yellow':'shoucang_d'}}.svg" class="review_img" data-index="{{index}}" data-videoid="{{item.videoId}}" bindtap='shoucang'></image>
-      <button open-type='share' data-videoid="{{item.videoId}}" class='review_button'>
+      <image src="../../img/{{item.isLike?'zan_d':'heart'}}.svg" class="review_img" data-cid="{{item.cid}}" data-index="{{index}}" bindtap='bindZan'></image>
+      <view class="videoBadge" wx:if="{{item.like_count}}">{{item.like_count>999?m1.parse(item.like_count/1000)+"k":item.like_count}}</view>
+      <image src="../../img/liuyan.svg" class="review_img" data-index="{{index}}" data-videoid="{{item.cid}}" bindtap='toVideoDetail'></image>
+      <image src="../../img/{{item.isCollect?'shoucang_yellow':'shoucang_d'}}.svg" class="review_img" data-index="{{index}}" data-videoid="{{item.cid}}" bindtap='shoucang'></image>
+      <button open-type='share' data-videoid="{{item.cid}}" class='review_button'>
         <image src="../../img/fenxiang.svg" class="review_img"></image>
       </button>
     </view>

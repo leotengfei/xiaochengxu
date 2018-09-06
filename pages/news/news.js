@@ -26,6 +26,9 @@ Page({
       }
     });
     //这里请求的是列表
+    wx.showLoading({
+      title: '加载中...',
+    })
     wx.request({
       url: 'https://mokey.club/News/NewsByName',
       method: 'POST',
@@ -37,6 +40,7 @@ Page({
       },
       success: function (res) {
         console.log(res)
+        wx.hideLoading();
         var data_list=res.data.data;
         that.setData({
           newsList: data_list,
